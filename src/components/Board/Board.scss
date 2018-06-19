@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron');
 
 $boardWidth: 600px;
+$smallBoardWidth: 400px;
 $blue: #79aff7;
 $clockFont: 'Orbitron', sans-serif;
 
@@ -31,14 +32,19 @@ $clockFont: 'Orbitron', sans-serif;
 .card {
 	position: relative;
 	display: inline-block;
-	width: calc((#{$boardWidth} / 4) - 10px);
-	height: calc((#{$boardWidth} / 4) + 20px);
+	width: calc((#{$smallBoardWidth} / 4) - 10px);
+	height: calc((#{$smallBoardWidth} / 4) + 20px);
 	margin-left: 10px;
 	margin-bottom: 20px;
 	background: white;
 	border-radius: 10px;
 	box-shadow: 0 0 0 1px darken($blue, 50%), 5px 5px 5px lighten(black, 25%);		
 	pointer-events: none;
+
+	@media screen and (min-width: 768px) {
+		width: calc((#{$boardWidth} / 4) - 10px);
+		height: calc((#{$boardWidth} / 4) + 20px);
+	}
 
 	span {
 		position: absolute;
