@@ -102,16 +102,16 @@ $clockFont: 'Orbitron', sans-serif;
 
 .final_time {
 	font-family: $clockFont;
-	color: green;
+	color: black;
 }
 
 .finished {
   position: absolute;
 	width: 50%;
-  height: 90%;
+  height: 100%;
   top: 50%;
   left: 50%;
-	background: fade-out(lighten($blue, 15%), 0.15);
+	background: fade-out(lighten($blue, 15%), 0.1);
   transform: translate(-50%,-50%);
   z-index: 1100;
   opacity: 0;
@@ -131,7 +131,7 @@ $clockFont: 'Orbitron', sans-serif;
   	.final_time {
   		display: block;
   		padding-top: 20px;
-  		font-size: 5rem;
+  		font-size: 4rem;
   		color: darken($blue, 30%);
   		text-shadow: 2px 2px 2px black;
   	}

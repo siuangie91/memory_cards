@@ -22,6 +22,7 @@ class Board extends React.Component {
 		}
 
 		this.flipCard = this.flipCard.bind(this);
+		this.showFinalTime = this.showFinalTime.bind(this);
 	}
 
 	flipCard(thisCard) {
@@ -110,6 +111,19 @@ class Board extends React.Component {
 		document.querySelector(`.${styles.blocker}`).classList.remove(`${styles.open}`);
 	}
 
+	showFinalTime() {
+		const theTime = this.state.finalTime.split(":");
+		const mins = +theTime[0]; // coerce as num
+		const secs = +theTime[1];
+
+		if(mins > 0) {
+			return `${mins} m, ${secs} s`;
+		} 
+		else {
+			return `${secs} s`;
+		}
+	}
+
 	render() {
 		// console.log('board state', this.state);
 		const deck = this.props.deck;
@@ -118,12 +132,12 @@ class Board extends React.Component {
 			<div className={styles.board_container}>
 				<div className={styles.timer_container}>
 					{
-						(this.state.timerOn) ? <Timer /> : ""
-					}
-					{
-						(this.state.finalTime) ? 
-							<div className={styles.final_time}>{this.state.finalTime}</div>
-							: ""
+						(this.state.timerOn) ? 
+							<Timer /> 
+							: 
+							<div className={styles.final_time}>
+								{(this.state.finalTime) ? this.state.finalTime : "0:00"}
+							</div>
 					}
 				</div>
 				<div className={styles.board}>
@@ -144,8 +158,8 @@ class Board extends React.Component {
 					(this.state.finalTime) ? 
 						<div className={styles.finished}>
 							<p>
-								Congrats! You finished in<br />
-								<span className={styles.final_time}>{this.state.finalTime}</span>
+								Congrats!<br />You finished in<br />
+								<span className={styles.final_time}>{this.showFinalTime()}</span>
 							</p>
 						</div>
 						: ""
