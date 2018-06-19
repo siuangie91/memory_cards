@@ -144,17 +144,19 @@ class Board extends React.Component {
 					<RestartBtn restart={this.props.restart}/>	
 				</div>
 				<div className={styles.board}>
-					{
-						deck.map((card, i) => {
-							return (
-								<div key={i} value={card}
-									className={`${styles.card} ${styles.facedown}`}
-									onClick={e => this.flipCard(e.target)}>
-									<span>{card}</span>
-								</div>
-							)
-						})
-					}
+					<div className={styles.card_container}>
+						{
+							deck.map((card, i) => {
+								return (
+									<div key={i} value={card}
+										className={`${styles.card} ${styles.facedown}`}
+										onClick={e => this.flipCard(e.target)}>
+										<span>{card}</span>
+									</div>
+								)
+							})
+						}
+					</div>
 				</div>
 
 				{

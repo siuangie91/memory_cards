@@ -16,8 +16,16 @@ $clockFont: 'Orbitron', sans-serif;
 }
 
 .board {
-	width: $boardWidth;
+	max-width: $boardWidth;
+	// width: $boardWidth;
 	margin: 20px auto;
+}
+
+.card_container {
+	display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {

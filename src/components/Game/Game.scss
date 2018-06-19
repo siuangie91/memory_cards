@@ -7,14 +7,16 @@ $grey: #333;
 :global(.btn) {
 	display: inline-block;
 	width: 25%;
+	min-width: 120px;
 	height: 3.5rem;
+	margin-bottom: 20px;
+	background: darken(white, 5%);
+	border: 1px solid white;
+	box-shadow: 0 8px 0 lighten(black, 40%);
 	font: {
 		family: $bodyFont;
 		size: 2rem;
 	}
-	background: darken(white, 5%);
-	border: 1px solid white;
-	box-shadow: 0 8px 0 lighten(black, 40%);
 	cursor: pointer;
 
 	&:hover {
