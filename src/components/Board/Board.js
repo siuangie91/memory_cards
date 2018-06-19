@@ -147,19 +147,16 @@ class Board extends React.Component {
 				</div>
 
 				<div className={styles.board}>
-					<div className={styles.card_container}>
-						{
-							deck.map((card, i) => {
-								return (
-									<Card key={i}
-										value={card}
-										classes={`${styles.card} ${styles.facedown}`}
-										clickHandler={e => this.flipCard(e.target)}
-										/>	
-								)
-							})
-						}
-					</div>
+					{
+						deck.map((card, i) => {
+							return (
+								<Card key={i}
+									value={card}
+									classes={`${styles.card} ${styles.facedown}`}
+									clickHandler={e => this.flipCard(e.target)}/>	
+							)
+						})
+					}
 				</div>
 
 				{
