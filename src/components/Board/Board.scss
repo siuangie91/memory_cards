@@ -2,6 +2,10 @@ $boardWidth: 600px;
 $blue: #79aff7;
 $white: #fff;
 
+.board_container {
+	position: relative;
+}
+
 .board {
 	width: $boardWidth;
 	margin: 20px auto;
@@ -38,5 +42,20 @@ $white: #fff;
 		span {
 			visibility: hidden;
 		}
+	}
+}
+
+.blocker {
+	display: none;
+	
+	&.open {
+		position: absolute;
+		display: block;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		background: fade-out(yellow, 1);
+		z-index: 10000;
 	}
 }

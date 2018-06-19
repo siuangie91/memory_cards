@@ -11,18 +11,28 @@ class Board extends React.Component {
 		const deck = this.props.deck;
 
 		this.state = {
-			totalCards: deck.length,
+			timerOn: false,
 			numPairs: deck.length / 2,
 			numFlipped: 0,
 			currPair: [],
-			numFoundPairs: 0
+			numFoundPairs: 0,
+			pristine: true
 		}
 
 		this.flipCard = this.flipCard.bind(this);
 	}
 
 	flipCard(thisCard) {
+		// flip the card
 		thisCard.classList.remove(styles.facedown);
+
+		// if this is the first flip, set timer on
+		if(this.state.pristine) {
+			this.setState({ 
+				timerOn: true,
+				pristine: false 
+			});			
+		}
 
 		this.setState(prevState => {
 			return {
@@ -31,18 +41,19 @@ class Board extends React.Component {
 			}
 		}, () => { // callback function
 			if(this.state.numFlipped == 2) {
-				// console.log('currPair', this.state.currPair);
-				this.checkMatch();
+				// open the blocker to prevent interaction with cards while setting state
+				document.querySelector(`.${styles.blocker}`).classList.add(`${styles.open}`);
 
+				this.checkMatch();
 			} 
 		});
 	}
 
 	checkMatch() {
-		if(this.state.currPair[0].getAttribute('value') === this.state.currPair[1].getAttribute('value')) {
-			const card1 = this.state.currPair[0];
-			const card2 = this.state.currPair[1];
+		const card1 = this.state.currPair[0];
+		const card2 = this.state.currPair[1];		
 
+		if(card1.getAttribute('value') === card2.getAttribute('value')) {
 			card1.classList.add('matched');
 			card2.classList.add('matched');
 
@@ -51,18 +62,25 @@ class Board extends React.Component {
 					numFoundPairs: prevState.numFoundPairs + 1
 				}
 			}, () => {
-				console.log('board state', this.state);
+				// remove the blocker
+				this.removeBlocker();
+				if(this.state.numFoundPairs === this.state.numPairs) {
+					alert('you matched all!');
+				}
 			});
 		} 
 		else { // if not match, flip everything that's not already matched back facedown
 			setTimeout(() => {
+				// remove the blocker
+				this.removeBlocker();
+
 				const theCards = document.querySelectorAll(`.${styles.card}:not(.matched)`);
 				[].forEach.call(theCards, (elem) => {
 					if(!elem.classList.contains(`${styles.facedown}`)) {
 						elem.classList.add(`${styles.facedown}`)
 					}
 				});
-			}, 1000);
+			}, 800);
 		}
 
 		// empty out the state properties that are handling the "rounds"
@@ -72,24 +90,34 @@ class Board extends React.Component {
 		});
 	}
 
+	removeBlocker() {
+		document.querySelector(`.${styles.blocker}`).classList.remove(`${styles.open}`);
+	}
+
 	render() {
 		// console.log('board state', this.state);
-
 		const deck = this.props.deck;
 
 		return (
-			<div className={styles.board}>
+			<div className={styles.board_container}>
 				{
-					deck.map((card, i) => {
-						return (
-							<div key={i} value={card}
-								className={`${styles.card} ${styles.facedown}`}
-								onClick={e => this.flipCard(e.target)}>
-								<span>{card}</span>
-							</div>
-						)
-					})
+					(this.state.timerOn) ? <Timer /> : ""
 				}
+				<div className={styles.board}>
+					{
+						deck.map((card, i) => {
+							return (
+								<div key={i} value={card}
+									className={`${styles.card} ${styles.facedown}`}
+									onClick={e => this.flipCard(e.target)}>
+									<span>{card}</span>
+								</div>
+							)
+						})
+					}
+				</div>
+
+				<div className={styles.blocker}></div>
 			</div>
 		);
 	}
