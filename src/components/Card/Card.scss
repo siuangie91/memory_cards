@@ -1,10 +1,5 @@
+@import '../App/App';
 @import '../Board/Board';
-
-@mixin keyframeAnim($name, $speed: 800, $fillmode: forwards) {
-	animation-name: $name;
-	animation-duration: #{$speed}ms;
-	animation-fill-mode: $fillmode;
-}
 
 .card {
   perspective: 1000px;
@@ -29,6 +24,8 @@
 	}
 
 	&.flip {
+		pointer-events: none;
+
 		.cardflipper {
 			transform: rotateY(180deg);
 		}
@@ -96,8 +93,12 @@
 		transform: scale(1);
 		left: 0;
 	}
-	100% {
+	99% {
 		left: 1000px;
+		opacity: 1;
+	}
+	100% {
+		opacity: 0;
 	}
 }
 

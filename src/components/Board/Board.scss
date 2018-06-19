@@ -1,9 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Orbitron');
-
-$boardWidth: 600px;
-$smallBoardWidth: 400px;
-$blue: #79aff7;
-$clockFont: 'Orbitron', sans-serif;
+@import '../App/App';
 
 .timer_container {
 	position: relative;
@@ -19,9 +14,7 @@ $clockFont: 'Orbitron', sans-serif;
 .board {
 	max-width: $boardWidth;
 	margin: 20px auto;
-	animation-name: fadein;
-	animation-duration: 400ms;
-	animation-fill-mode: forwards;
+	@include keyframeAnim(fadein, 400);
 }
 
 @keyframes fadein {
@@ -55,9 +48,7 @@ $clockFont: 'Orbitron', sans-serif;
   transform: translate(-50%,-50%);
   z-index: 1100;
   opacity: 0;
-  animation-name: finished;
-  animation-duration: 1200ms;
-  animation-fill-mode: forwards;
+  @include keyframeAnim(finished, 1200);
   text-align: center;	
 
   p {

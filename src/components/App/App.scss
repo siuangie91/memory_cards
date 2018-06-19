@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron|Montserrat');
+
+$boardWidth: 600px;
+$smallBoardWidth: 400px;
+$blue: #79aff7;
+$bodyFont: 'Montserrat', sans-serif;
+$clockFont: 'Orbitron', sans-serif;
+$grey: #333;
+
+@mixin keyframeAnim($name, $speed: 800, $fillmode: forwards) {
+	animation-name: $name;
+	animation-duration: #{$speed}ms;
+	animation-fill-mode: $fillmode;
+}
+
+
 * {
 	margin: 0;
 	border: 0;
@@ -16,4 +32,26 @@ body {
 	height: 100%;
 	min-height: 100vh;
 	background-color: fade-out(white, 0.35);
+}
+
+:global(.btn) {
+	display: inline-block;
+	width: 25%;
+	min-width: 120px;
+	height: 3.5rem;
+	margin-bottom: 20px;
+	background: darken(white, 5%);
+	border: 1px solid white;
+	box-shadow: 0 8px 0 lighten(black, 40%);
+	font: {
+		family: $bodyFont;
+		size: 2rem;
+	}
+	cursor: pointer;
+
+	&:hover {
+		position: relative;
+		top: 4px;
+		box-shadow: 0 4px 0 lighten(black, 40%);
+	}
 }

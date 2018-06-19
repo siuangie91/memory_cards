@@ -72,7 +72,6 @@ class Game extends React.Component {
 	    			<div className={styles.difficulty}>
 					    <p>Choose a difficulty!</p>	
 					    <button className="btn" onClick={() => this.fetchCards('easy')}>Easy</button>
-					    {" "}	
 					    <button className="btn" onClick={() => this.fetchCards('hard')}>Hard</button>
 	    			</div>
 	    			: ""
