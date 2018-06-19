@@ -4,7 +4,9 @@ import Timer from '../Timer/Timer';
 import timerStyles from '../Timer/Timer.scss';
 
 import RestartBtn from '../RestartBtn/RestartBtn';
+
 import Card from '../Card/Card';
+import cardStyles from '../Card/Card.scss';
 
 import styles from './Board.scss';
 
@@ -30,7 +32,7 @@ class Board extends React.Component {
 
 	flipCard(thisCard) {
 		// flip the card
-		thisCard.classList.remove(styles.facedown);
+		thisCard.classList.add(cardStyles.flip);
 
 		// if this is the first flip, set timer on
 		if(this.state.pristine) {
@@ -60,8 +62,8 @@ class Board extends React.Component {
 		const card2 = this.state.currPair[1];		
 
 		if(card1.getAttribute('value') === card2.getAttribute('value')) { // if match
-			card1.classList.add(`${styles.matched}`);
-			card2.classList.add(`${styles.matched}`);
+			card1.classList.add(`${cardStyles.matched}`);
+			card2.classList.add(`${cardStyles.matched}`);
 
 			this.setState(prevState => {
 				return {
@@ -85,22 +87,22 @@ class Board extends React.Component {
 		} 
 		else { // if not match
 			// do a little animation
-			card1.classList.add(`${styles.wrong}`);
-			card2.classList.add(`${styles.wrong}`);
+			card1.classList.add(`${cardStyles.wrong}`);
+			card2.classList.add(`${cardStyles.wrong}`);
 
 			setTimeout(() => { // flip everything that's not already matched back facedown
 				// remove the blocker
 				this.removeBlocker();
 
-				const theCards = document.querySelectorAll(`.${styles.card}:not(.${styles.matched})`);
+				const theCards = document.querySelectorAll(`.${cardStyles.card}:not(.${cardStyles.matched})`);
 				[].forEach.call(theCards, (elem) => {
-					if(!elem.classList.contains(`${styles.facedown}`)) {
-						elem.classList.add(`${styles.facedown}`)
+					if(!elem.classList.contains(`${cardStyles.facedown}`)) {
+						elem.classList.add(`${cardStyles.facedown}`)
 					}
 				});
 
-				card1.classList.remove(`${styles.wrong}`);
-				card2.classList.remove(`${styles.wrong}`);
+				card1.classList.remove(`${cardStyles.wrong}`);
+				card2.classList.remove(`${cardStyles.wrong}`);
 			}, 1200);
 		}
 
@@ -147,16 +149,17 @@ class Board extends React.Component {
 				</div>
 
 				<div className={styles.board}>
-					{
-						deck.map((card, i) => {
-							return (
-								<Card key={i}
-									value={card}
-									classes={`${styles.card} ${styles.facedown}`}
-									clickHandler={e => this.flipCard(e.target)}/>	
-							)
-						})
-					}
+					<div className={styles.card_container}>
+						{
+							deck.map((card, i) => {
+								return (
+									<Card key={i}
+										value={card}
+										clickHandler={e => this.flipCard(e.target)}/>	
+								)
+							})
+						}
+					</div>
 				</div>
 
 				{

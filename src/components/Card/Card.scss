@@ -1,0 +1,114 @@
+@import '../Board/Board';
+
+
+
+.card {
+  perspective: 1000px;
+  position: relative;
+	display: inline-block;
+	width: calc((#{$smallBoardWidth} / 4) - 10px);
+	height: calc((#{$smallBoardWidth} / 4) + 20px);
+	margin-left: 10px;
+	margin-bottom: 20px;
+	cursor: pointer;
+
+	@media screen and (min-width: 768px) {
+		width: calc((#{$boardWidth} / 4) - 10px);
+		height: calc((#{$boardWidth} / 4) + 20px);
+	}
+
+	.cardflipper {
+		position: relative;
+		height: 100%;
+		transition: 400ms;
+		transform-style: preserve-3d;
+	}
+
+	&:hover {
+		.cardflipper {
+			transform: rotateY(180deg);
+		}
+	}
+
+	.cardside {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		border-radius: 10px;
+		box-shadow: 0 0 0 1px darken($blue, 50%), 5px 5px 5px lighten(black, 25%);
+		backface-visibility: hidden;
+	}
+
+	.cardback {
+		z-index: 2;
+		transform: rotateY(0deg);
+		background: darken($blue, 40%);
+		border: 6px solid white;
+	}
+
+	.cardface {
+		transform: rotateY(180deg);
+		background: white;
+		
+		span {
+			position: absolute;
+			display: block;
+			width: 100%;
+			top: 50%;
+			color: $blue;
+			font-size: 4rem;
+			text-align: center;
+			transform: translate(0,-50%);
+		}
+	}
+
+	
+
+	// &.matched {
+	// 	animation-name: match;
+	// 	animation-duration: 800ms;
+	// 	animation-fill-mode: forwards;
+	// }
+
+	// &.wrong {
+	// 	animation-name: wrong;
+	// 	animation-duration: 400ms;
+	// 	animation-fill-mode: forwards;
+	// }
+}
+
+
+@keyframes match {
+	0% {
+		transform: scale(1);		
+	}
+	50% {
+		transform: scale(1.1);
+		box-shadow: 0 0 15px lighten(green, 25%);
+		z-index: 200;
+	}
+	100% {
+		transform: scale(1);		
+	}
+}
+
+@keyframes wrong {
+	0% {
+		transform: rotate(15deg);		
+	}
+	25% {
+		transform: rotate(-15deg);	
+	}
+	50% {
+		transform: rotate(15deg);
+		box-shadow: 0 0 15px red;
+	}
+	75% {
+		transform: rotate(-15deg);	
+	}
+	100% {
+		transform: rotate(0);
+	}
+}
