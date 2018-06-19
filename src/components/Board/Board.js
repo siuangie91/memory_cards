@@ -4,6 +4,7 @@ import Timer from '../Timer/Timer';
 import timerStyles from '../Timer/Timer.scss';
 
 import RestartBtn from '../RestartBtn/RestartBtn';
+import Card from '../Card/Card';
 
 import styles from './Board.scss';
 
@@ -150,11 +151,11 @@ class Board extends React.Component {
 						{
 							deck.map((card, i) => {
 								return (
-									<div key={i} value={card}
-										className={`${styles.card} ${styles.facedown}`}
-										onClick={e => this.flipCard(e.target)}>
-										<span>{card}</span>
-									</div>
+									<Card key={i}
+										value={card}
+										classes={`${styles.card} ${styles.facedown}`}
+										clickHandler={e => this.flipCard(e.target)}
+										/>	
 								)
 							})
 						}
