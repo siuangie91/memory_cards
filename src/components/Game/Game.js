@@ -50,6 +50,9 @@ class Game extends React.Component {
 
 				// console.log(json.levels.find(item => item.difficulty === level).cards);
 				// console.log(this.state);
+			})
+			.catch(error => {
+				throw Error('No cards were found!');
 			});
 	}
 
