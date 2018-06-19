@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+$clockFont: 'Orbitron', sans-serif;
+
 .timer {
   color: rebeccapurple;
+	font-family: $clockFont;
 }

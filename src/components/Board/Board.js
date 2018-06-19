@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Timer from '../Timer/Timer';
+import timerStyles from '../Timer/Timer.scss';
 
 import styles from './Board.scss';
 
@@ -16,7 +17,8 @@ class Board extends React.Component {
 			numFlipped: 0,
 			currPair: [],
 			numFoundPairs: 0,
-			pristine: true
+			pristine: true, 
+			finalTime: ""
 		}
 
 		this.flipCard = this.flipCard.bind(this);
@@ -53,19 +55,27 @@ class Board extends React.Component {
 		const card1 = this.state.currPair[0];
 		const card2 = this.state.currPair[1];		
 
-		if(card1.getAttribute('value') === card2.getAttribute('value')) {
-			card1.classList.add('matched');
-			card2.classList.add('matched');
+		if(card1.getAttribute('value') === card2.getAttribute('value')) { // if match
+			card1.classList.add(`${styles.matched}`);
+			card2.classList.add(`${styles.matched}`);
 
 			this.setState(prevState => {
 				return {
 					numFoundPairs: prevState.numFoundPairs + 1
 				}
-			}, () => {
+			}, () => { // when done setting state
 				// remove the blocker
 				this.removeBlocker();
 				if(this.state.numFoundPairs === this.state.numPairs) {
-					alert('you matched all!');
+					const timer = document.querySelector(`.${timerStyles.timer}`);
+					const finalTime = timer.innerHTML;
+
+					this.setState({
+						timerOn: false,
+						finalTime: finalTime
+					})
+
+					// alert('you matched all!');
 				}
 			});
 		} 
@@ -74,7 +84,7 @@ class Board extends React.Component {
 				// remove the blocker
 				this.removeBlocker();
 
-				const theCards = document.querySelectorAll(`.${styles.card}:not(.matched)`);
+				const theCards = document.querySelectorAll(`.${styles.card}:not(.${styles.matched})`);
 				[].forEach.call(theCards, (elem) => {
 					if(!elem.classList.contains(`${styles.facedown}`)) {
 						elem.classList.add(`${styles.facedown}`)
@@ -100,9 +110,16 @@ class Board extends React.Component {
 
 		return (
 			<div className={styles.board_container}>
-				{
-					(this.state.timerOn) ? <Timer /> : ""
-				}
+				<div className={styles.timer_container}>
+					{
+						(this.state.timerOn) ? <Timer /> : ""
+					}
+					{
+						(this.state.finalTime) ? 
+							<div className={styles.final_time}>{this.state.finalTime}</div>
+							: ""
+					}
+				</div>
 				<div className={styles.board}>
 					{
 						deck.map((card, i) => {

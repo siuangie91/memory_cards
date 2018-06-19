@@ -42,6 +42,11 @@ class TimerContainer extends React.Component {
     })
   }
 
+  stop() {
+    console.log('stopped')
+    clearInterval(this.interval);
+  }
+
   render() {
     return <Timer time={this.state.secondsElapsed} />
   }

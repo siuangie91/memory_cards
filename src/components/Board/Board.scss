@@ -1,6 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
 $boardWidth: 600px;
 $blue: #79aff7;
 $white: #fff;
+$clockFont: 'Orbitron', sans-serif;
+
+.timer_container {
+	text-align: center;
+  height: 40px;
+  margin-top: 20px;
+  font-size: 40px;
+}
 
 .board_container {
 	position: relative;
@@ -18,15 +28,18 @@ $white: #fff;
 	height: calc((#{$boardWidth} / 4) + 20px);
 	margin-left: 10px;
 	margin-bottom: 20px;
-	background: #79AFF7;
+	background: $white;
+	border-radius: 10px;
+	box-shadow: 0 0 0 1px darken($blue, 50%), 5px 5px 5px lighten(black, 45%);		
 	pointer-events: none;
+	box-sizing: border-box;
 
 	span {
 		position: absolute;
 		display: block;
 		width: 100%;
 		top: 50%;
-		color: $white;
+		color: $blue;
 		text-align: center;
 		font-size: 3rem;
 		-webkit-transform: translate(0,-50%);
@@ -35,7 +48,8 @@ $white: #fff;
 	}
 
 	&.facedown {
-		background: black;
+		background: darken($blue, 50%);
+		border: 7px solid $white;
 		cursor: pointer;
 		pointer-events: auto;
 
@@ -43,7 +57,34 @@ $white: #fff;
 			visibility: hidden;
 		}
 	}
+
+	&.matched {
+		animation-name: match;
+		animation-duration: 800ms;
+		animation-fill-mode: forwards;
+	}
 }
+
+@keyframes match {
+	0% {
+		transform: scale(1);		
+	}
+	50% {
+		transform: scale(1.2);
+		box-shadow: 0 0 5px lighten(green, 25%);
+		z-index: 200;
+	}
+	100% {
+		transform: scale(1);		
+	}
+}
+
+
+.final_time {
+	font-family: $clockFont;
+	color: green;
+}
+
 
 .blocker {
 	display: none;
