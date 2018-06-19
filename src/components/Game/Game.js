@@ -1,9 +1,9 @@
 import React from 'react';
 import fetch from 'isomorphic-fetch';
 
-import styles from './Game.scss';
-
 import Board from '../Board/Board';
+
+import styles from './Game.scss';
 
 const VIEWS = {
 	INIT: 'init',

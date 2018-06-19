@@ -1,13 +1,11 @@
 import React from 'react';
 
 import Timer from '../Timer/Timer';
-import timerStyles from '../Timer/Timer.scss';
-
 import RestartBtn from '../RestartBtn/RestartBtn';
-
 import Card from '../Card/Card';
-import cardStyles from '../Card/Card.scss';
 
+import timerStyles from '../Timer/Timer.scss';
+import cardStyles from '../Card/Card.scss';
 import styles from './Board.scss';
 
 class Board extends React.Component {

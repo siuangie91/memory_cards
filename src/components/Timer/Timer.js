@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import styles from './Timer.scss'
+import styles from './Timer.scss';
 
 export const formatTime = time => {
   if (time < 0) return '--:--'
