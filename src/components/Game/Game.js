@@ -23,13 +23,9 @@ class Game extends React.Component {
 	}
 
 	fetchCards(level) {
-		console.log('clikced');
-
 		fetch('https://web-code-test-dot-nyt-games-prd.appspot.com/cards.json', { method: 'GET'})
 			.then(response => response.json())
 			.then(json => {
-				console.log('json', json);
-
 				// shuffled the deck using Fisher-Yates Shuffle (https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
 				const deck = shuffle(json.levels.find(item => item.difficulty === level).cards); // grab only the deck that was selected
 				
@@ -60,19 +56,15 @@ class Game extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className={styles.game}>
 		    <h1 className={styles.header}>NYT Memory Game!</h1>
 		    
 		    {
 		    	(this.state.view === VIEWS.INIT) ? 
-	    			<div>
-	    				<div className={styles.placeholder}>Let the games begin (here).</div>
-	    				<div>
-					    	<p>Choose a difficulty!</p>	
-					    	<button onClick={() => this.fetchCards('easy')}>Easy</button>	
-					    	{' '}
-					    	<button onClick={() => this.fetchCards('hard')}>Hard</button>
-					    </div>
+	    			<div className={styles.difficulty}>
+					    <p>Choose a difficulty!</p>	
+					    <button className={styles.choice_btn} onClick={() => this.fetchCards('easy')}>Easy</button>	
+					    <button className={styles.choice_btn} onClick={() => this.fetchCards('hard')}>Hard</button>
 	    			</div>
 	    			: ""
 		    }
@@ -82,8 +74,6 @@ class Game extends React.Component {
 		    		<Board deck={this.state.deck}/>
 		    		: ""
 		    }
-
-		    
 		  </div>
 		);
 	}

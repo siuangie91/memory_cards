@@ -1,15 +1,41 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+$bodyFont: 'Montserrat', sans-serif;
 $grey: #333;
+
+.game {
+	font-family: $bodyFont;
+}
 
 .header {
 	padding-top: 20px;
 	color: $grey;
-  font: {
-	  family: sans-serif;
-	  size: 24px;
-	}
+  font-size: 2rem;
   text-align: center;
 }
 
-.placeholder {
-  font-style: italic;
+.difficulty {
+  height: 200px;
+  margin: 3rem;
+  padding: 2rem;
+	text-align: center;
+
+	p {
+		margin-bottom: 20px;
+	}
+}
+
+.choice_btn {
+	display: inline-block;
+	width: 25%;
+	height: 3rem;
+	font: {
+		family: $bodyFont;
+		size: 2rem;
+	}
+	cursor: pointer;
+
+	&:first-of-type {
+		margin-right: 20px;
+	}
 }
