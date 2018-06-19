@@ -28,12 +28,21 @@ $grey: #333;
 .choice_btn {
 	display: inline-block;
 	width: 25%;
-	height: 3rem;
+	height: 3.5rem;
 	font: {
 		family: $bodyFont;
 		size: 2rem;
 	}
+	background: darken(white, 5%);
+	border: 1px solid white;
+	box-shadow: 0 8px 0 lighten(black, 40%);
 	cursor: pointer;
+
+	&:hover {
+		position: relative;
+		top: 4px;
+		box-shadow: 0 4px 0 lighten(black, 40%);
+	}
 
 	&:first-of-type {
 		margin-right: 20px;
