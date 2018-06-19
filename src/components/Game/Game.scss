@@ -11,17 +11,3 @@
   text-align: center;
 }
 
-.difficulty {
-  height: 200px;
-  margin: 3rem;
-  padding: 2rem;
-	text-align: center;
-
-	p {
-		margin-bottom: 20px;
-	}
-
-	& :global(.btn):first-of-type {
-		margin-right: 20px;
-	}
-}

@@ -121,10 +121,10 @@ class Board extends React.Component {
 		const secs = +theTime[1];
 
 		if(mins > 0) {
-			return `${mins} m, ${secs} s`;
+			return `${mins} min, ${secs} sec`;
 		} 
 		else {
-			return `${secs} s`;
+			return `${secs} sec`;
 		}
 	}
 

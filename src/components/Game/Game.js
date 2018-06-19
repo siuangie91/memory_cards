@@ -2,11 +2,14 @@ import React from 'react';
 import fetch from 'isomorphic-fetch';
 
 import Board from '../Board/Board';
+import Choices from '../Choices/Choices';
 
+import choicesStyles from '../Choices/Choices.scss';
 import styles from './Game.scss';
 
 const VIEWS = {
 	INIT: 'init',
+	CHOOSE_DIFFICULTY: 'choose',
 	PLAY: 'play'
 }
 
@@ -16,11 +19,22 @@ class Game extends React.Component {
 
 		this.state = {
 			view: VIEWS.INIT,
-			deck: []			
+			deck: [],
+			deckColor: ""			
 		};
 
 		this.fetchCards = this.fetchCards.bind(this);
 		this.restartGame = this.restartGame.bind(this);
+		this.setCardStyle = this.setCardStyle.bind(this);
+	}
+
+	setCardStyle(color) {
+		console.log('clicked');
+
+		this.setState({ 
+			deckColor: color,
+			view: VIEWS.CHOOSE_DIFFICULTY
+		});
 	}
 
 	fetchCards(level) {
@@ -63,27 +77,41 @@ class Game extends React.Component {
 	}
 
 	render() {
+		let theView;
+		switch(this.state.view) {
+			case VIEWS.CHOOSE_DIFFICULTY:
+				theView = 
+					<Choices 
+						text="Choose a difficulty!"
+						clickHandler={this.fetchCards}
+						btn1Text="easy"
+						btn2Text="hard"/>
+
+				break;
+			case VIEWS.PLAY:
+				theView =
+					<Board 
+	    			deck={this.state.deck}
+	    			restart={this.restartGame}/>	
+				break;
+			case VIEWS.INIT:
+			default:
+				theView =
+					<Choices 
+						text="Choose a card color!"
+						clickHandler={this.setCardStyle}
+						btn1Classes={choicesStyles.red}
+						btn2Classes={choicesStyles.blue}
+						btn1Text="red"
+						btn2Text="blue"/>
+				break;
+		}
+
 		return (
 			<div className={styles.game}>
 		    <h1 className={styles.header}>NYT Memory Game!</h1>
 		    
-		    {
-		    	(this.state.view === VIEWS.INIT) ? 
-	    			<div className={styles.difficulty}>
-					    <p>Choose a difficulty!</p>	
-					    <button className="btn" onClick={() => this.fetchCards('easy')}>Easy</button>
-					    <button className="btn" onClick={() => this.fetchCards('hard')}>Hard</button>
-	    			</div>
-	    			: ""
-		    }
-
-		    {
-		    	(this.state.view === VIEWS.PLAY) ? 
-		    		<Board 
-		    			deck={this.state.deck}
-		    			restart={this.restartGame}/>
-		    		: ""
-		    }
+				{theView}
 		  </div>
 		);
 	}
