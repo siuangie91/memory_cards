@@ -10,8 +10,8 @@ class Choices extends React.Component {
 		return (
 			<div className={styles.choices}>
 		    <p>{this.props.text}</p>	
-		    <button className={`btn ${btn1Classes}`} onClick={() => this.props.clickHandler('easy')}>{this.props.btn1Text}</button>
-		    <button className={`btn ${btn2Classes}`} onClick={() => this.props.clickHandler('hard')}>{this.props.btn2Text}</button>
+		    <button className={`btn ${btn1Classes}`} onClick={() => this.props.clickHandler(this.props.btn1Text)}>{this.props.btn1Text}</button>
+		    <button className={`btn ${btn2Classes}`} onClick={() => this.props.clickHandler(this.props.btn2Text)}>{this.props.btn2Text}</button>
 			</div>
 		);
 	}

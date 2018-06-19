@@ -29,8 +29,6 @@ class Game extends React.Component {
 	}
 
 	setCardStyle(color) {
-		console.log('clicked');
-
 		this.setState({ 
 			deckColor: color,
 			view: VIEWS.CHOOSE_DIFFICULTY
@@ -86,12 +84,12 @@ class Game extends React.Component {
 						clickHandler={this.fetchCards}
 						btn1Text="easy"
 						btn2Text="hard"/>
-
 				break;
 			case VIEWS.PLAY:
 				theView =
 					<Board 
 	    			deck={this.state.deck}
+	    			deckColor={this.state.deckColor}
 	    			restart={this.restartGame}/>	
 				break;
 			case VIEWS.INIT:

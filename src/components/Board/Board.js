@@ -153,6 +153,7 @@ class Board extends React.Component {
 								return (
 									<Card key={i}
 										value={card}
+										color={this.props.deckColor}
 										clickHandler={e => this.flipCard(e.currentTarget)}/>	
 								)
 							})

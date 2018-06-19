@@ -6,13 +6,13 @@ class Card extends React.Component {
 	render() {
 		return (
 			<div value={this.props.value}
-				className={`${styles.card}`}
+				className={styles.card}
 				onClick={this.props.clickHandler}>
 
 				<div className={styles.cardflipper}>
-					<div className={`${styles.cardside} ${styles.cardback}`}></div>
+					<div className={`${styles.cardside} ${styles.cardback} ${styles[this.props.color]}`}></div>
 
-					<div className={`${styles.cardside} ${styles.cardface}`}>
+					<div className={`${styles.cardside} ${styles.cardface} ${styles[this.props.color]}`}>
 						<span>{this.props.value}</span>
 					</div>
 				</div>

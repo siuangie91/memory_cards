@@ -45,8 +45,15 @@
 	.cardback {
 		z-index: 2;
 		transform: rotateY(0deg);
-		background: darken($blue, 40%);
 		border: 6px solid white;
+
+		&.red {
+			background: $burgundy;
+		}
+
+		&.blue {
+			background: darken($blue, 40%);
+		}
 	}
 
 	.cardface {
@@ -58,10 +65,21 @@
 			display: block;
 			width: 100%;
 			top: 50%;
-			color: $blue;
 			font-size: 4rem;
 			text-align: center;
 			transform: translate(0,-50%);
+		}
+
+		&.red {
+			span {
+				color: lighten($burgundy, 20%);
+			}
+		}
+
+		&.blue {
+			span {
+				color: $blue;
+			}
 		}
 	}
 
