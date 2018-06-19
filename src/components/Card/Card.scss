@@ -1,5 +1,11 @@
 @import '../Board/Board';
 
+@mixin keyframeAnim($name, $speed: 800, $fillmode: forwards) {
+	animation-name: $name;
+	animation-duration: #{$speed}ms;
+	animation-fill-mode: $fillmode;
+}
+
 .card {
   perspective: 1000px;
   position: relative;
@@ -63,16 +69,16 @@
 	}
 
 	&.matched {
-		animation-name: match;
-		animation-duration: 800ms;
-		animation-fill-mode: forwards;
+		@include keyframeAnim(match, 1600);
 	}
 
 	&.wrong {
-		animation-name: wrong;
-		animation-duration: 400ms;
-		animation-fill-mode: forwards;
+		@include keyframeAnim(wrong, 400);
 		animation-delay: 400ms;
+
+		.cardface {
+			box-shadow: 0 0 15px red;	
+		}
 	}
 }
 
@@ -81,13 +87,17 @@
 	0% {
 		transform: scale(1);		
 	}
-	50% {
+	25% {
 		transform: scale(1.1);
 		box-shadow: 0 0 15px lighten(green, 25%);
 		z-index: 200;
 	}
+	50% {
+		transform: scale(1);
+		left: 0;
+	}
 	100% {
-		transform: scale(1);		
+		left: 1000px;
 	}
 }
 
@@ -96,11 +106,10 @@
 		transform: rotate(15deg);		
 	}
 	25% {
-		transform: rotate(-15deg);	
+		transform: rotate(-15deg);
 	}
 	50% {
 		transform: rotate(15deg);
-		box-shadow: 0 0 15px red;
 	}
 	75% {
 		transform: rotate(-15deg);	

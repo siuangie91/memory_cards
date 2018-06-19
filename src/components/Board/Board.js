@@ -31,7 +31,6 @@ class Board extends React.Component {
 	}
 
 	flipCard(thisCard) {
-		console.log('thisCard', thisCard);
 		// flip the card
 		thisCard.classList.add(`${cardStyles.flip}`);
 
@@ -87,7 +86,7 @@ class Board extends React.Component {
 			});
 		} 
 		else { // if not match
-			// do a little animation
+			// do a little dance
 			card1.classList.add(`${cardStyles.wrong}`);
 			card2.classList.add(`${cardStyles.wrong}`);
 
@@ -104,7 +103,7 @@ class Board extends React.Component {
 
 				card1.classList.remove(`${cardStyles.wrong}`);
 				card2.classList.remove(`${cardStyles.wrong}`);
-			}, 1200);
+			}, 1600);
 		}
 
 		// empty out the state properties that are handling the "rounds"
