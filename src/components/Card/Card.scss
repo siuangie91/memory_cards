@@ -1,7 +1,5 @@
 @import '../Board/Board';
 
-
-
 .card {
   perspective: 1000px;
   position: relative;
@@ -24,7 +22,7 @@
 		transform-style: preserve-3d;
 	}
 
-	&:hover {
+	&.flip {
 		.cardflipper {
 			transform: rotateY(180deg);
 		}

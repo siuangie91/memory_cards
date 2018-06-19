@@ -31,8 +31,9 @@ class Board extends React.Component {
 	}
 
 	flipCard(thisCard) {
+		console.log('thisCard', thisCard);
 		// flip the card
-		thisCard.classList.add(cardStyles.flip);
+		thisCard.classList.add(`${cardStyles.flip}`);
 
 		// if this is the first flip, set timer on
 		if(this.state.pristine) {
@@ -155,7 +156,7 @@ class Board extends React.Component {
 								return (
 									<Card key={i}
 										value={card}
-										clickHandler={e => this.flipCard(e.target)}/>	
+										clickHandler={e => this.flipCard(e.currentTarget)}/>	
 								)
 							})
 						}
