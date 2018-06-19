@@ -97,8 +97,8 @@ class Board extends React.Component {
 
 				const theCards = document.querySelectorAll(`.${cardStyles.card}:not(.${cardStyles.matched})`);
 				[].forEach.call(theCards, (elem) => {
-					if(!elem.classList.contains(`${cardStyles.facedown}`)) {
-						elem.classList.add(`${cardStyles.facedown}`)
+					if(elem.classList.contains(`${cardStyles.flip}`)) {
+						elem.classList.remove(`${cardStyles.flip}`)
 					}
 				});
 
