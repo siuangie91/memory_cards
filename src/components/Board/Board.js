@@ -80,6 +80,9 @@ class Board extends React.Component {
 			});
 		} 
 		else { // if not match, flip everything that's not already matched back facedown
+			card1.classList.add(`${styles.wrong}`);
+			card2.classList.add(`${styles.wrong}`);
+
 			setTimeout(() => {
 				// remove the blocker
 				this.removeBlocker();
@@ -90,7 +93,10 @@ class Board extends React.Component {
 						elem.classList.add(`${styles.facedown}`)
 					}
 				});
-			}, 800);
+
+				card1.classList.remove(`${styles.wrong}`);
+				card2.classList.remove(`${styles.wrong}`);
+			}, 1200);
 		}
 
 		// empty out the state properties that are handling the "rounds"
@@ -133,6 +139,17 @@ class Board extends React.Component {
 						})
 					}
 				</div>
+
+				{
+					(this.state.finalTime) ? 
+						<div className={styles.finished}>
+							<p>
+								Congrats! You finished in<br />
+								<span className={styles.final_time}>{this.state.finalTime}</span>
+							</p>
+						</div>
+						: ""
+				}
 
 				<div className={styles.blocker}></div>
 			</div>

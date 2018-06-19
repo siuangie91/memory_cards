@@ -23,10 +23,12 @@ class Game extends React.Component {
 	}
 
 	fetchCards(level) {
+		console.log('clikced');
+
 		fetch('https://web-code-test-dot-nyt-games-prd.appspot.com/cards.json', { method: 'GET'})
 			.then(response => response.json())
 			.then(json => {
-				// console.log('json', json);
+				console.log('json', json);
 
 				// shuffled the deck using Fisher-Yates Shuffle (https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
 				const deck = shuffle(json.levels.find(item => item.difficulty === level).cards); // grab only the deck that was selected
@@ -60,7 +62,6 @@ class Game extends React.Component {
 		return (
 			<div>
 		    <h1 className={styles.header}>NYT Memory Game!</h1>
-		    {/*<Timer />*/}
 		    
 		    {
 		    	(this.state.view === VIEWS.INIT) ? 

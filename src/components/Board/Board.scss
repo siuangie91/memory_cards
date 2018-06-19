@@ -2,7 +2,6 @@
 
 $boardWidth: 600px;
 $blue: #79aff7;
-$white: #fff;
 $clockFont: 'Orbitron', sans-serif;
 
 .timer_container {
@@ -28,11 +27,10 @@ $clockFont: 'Orbitron', sans-serif;
 	height: calc((#{$boardWidth} / 4) + 20px);
 	margin-left: 10px;
 	margin-bottom: 20px;
-	background: $white;
+	background: white;
 	border-radius: 10px;
 	box-shadow: 0 0 0 1px darken($blue, 50%), 5px 5px 5px lighten(black, 45%);		
 	pointer-events: none;
-	box-sizing: border-box;
 
 	span {
 		position: absolute;
@@ -42,14 +40,12 @@ $clockFont: 'Orbitron', sans-serif;
 		color: $blue;
 		text-align: center;
 		font-size: 3rem;
-		-webkit-transform: translate(0,-50%);
-		-moz-transform: translate(0,-50%);
 		transform: translate(0,-50%);
 	}
 
 	&.facedown {
 		background: darken($blue, 50%);
-		border: 7px solid $white;
+		border: 7px solid white;
 		cursor: pointer;
 		pointer-events: auto;
 
@@ -63,6 +59,12 @@ $clockFont: 'Orbitron', sans-serif;
 		animation-duration: 800ms;
 		animation-fill-mode: forwards;
 	}
+
+	&.wrong {
+		animation-name: wrong;
+		animation-duration: 400ms;
+		animation-fill-mode: forwards;
+	}
 }
 
 @keyframes match {
@@ -70,8 +72,8 @@ $clockFont: 'Orbitron', sans-serif;
 		transform: scale(1);		
 	}
 	50% {
-		transform: scale(1.2);
-		box-shadow: 0 0 5px lighten(green, 25%);
+		transform: scale(1.1);
+		box-shadow: 0 0 15px lighten(green, 25%);
 		z-index: 200;
 	}
 	100% {
@@ -79,10 +81,70 @@ $clockFont: 'Orbitron', sans-serif;
 	}
 }
 
+@keyframes wrong {
+	0% {
+		transform: rotate(15deg);		
+	}
+	25% {
+		transform: rotate(-15deg);	
+	}
+	50% {
+		transform: rotate(15deg);
+		box-shadow: 0 0 15px red;
+	}
+	75% {
+		transform: rotate(-15deg);	
+	}
+	100% {
+		transform: rotate(0);
+	}
+}
 
 .final_time {
 	font-family: $clockFont;
 	color: green;
+}
+
+.finished {
+  position: absolute;
+	width: 50%;
+  height: 90%;
+  top: 50%;
+  left: 50%;
+	background: fade-out(lighten($blue, 15%), 0.15);
+  transform: translate(-50%,-50%);
+  z-index: 1100;
+  opacity: 0;
+  animation-name: finished;
+  animation-duration: 1200ms;
+  animation-fill-mode: forwards;
+
+  p {
+		position: absolute;
+		width: 100%;
+		top: 50%;
+		left: 0;
+		font-size: 2rem;
+  	text-align: center;
+  	transform: translate(0%,-50%);
+
+  	.final_time {
+  		display: block;
+  		padding-top: 20px;
+  		font-size: 5rem;
+  		color: darken($blue, 30%);
+  		text-shadow: 2px 2px 2px black;
+  	}
+  }
+}
+
+@keyframes finished {
+	40% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }
 
 
@@ -97,6 +159,6 @@ $clockFont: 'Orbitron', sans-serif;
 		top: 0;
 		left: 0;
 		background: fade-out(yellow, 1);
-		z-index: 10000;
+		z-index: 1000;
 	}
 }

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+$bodyFont: 'Roboto', sans-serif;
+
+* {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	background: url(https://images-na.ssl-images-amazon.com/images/I/71ALfUTir8L._SY355_.jpg);
+	background-repeat: repeat;
+}
+
+body {
+	height: 100vh;
+	// background-color: fade-out(red, 0.5);
+}
