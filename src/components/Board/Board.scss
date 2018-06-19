@@ -18,8 +18,19 @@ $clockFont: 'Orbitron', sans-serif;
 
 .board {
 	max-width: $boardWidth;
-	// width: $boardWidth;
 	margin: 20px auto;
+	animation-name: fadein;
+	animation-duration: 400ms;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
 
 .card_container {
