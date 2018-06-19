@@ -25,7 +25,8 @@ $grey: #333;
 html {
 	background: url(http://allroundnews.com/wp-content/uploads/2012/02/seamless-wood-texture-free-74.jpg);
 	background-repeat: repeat;
-	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 body {
