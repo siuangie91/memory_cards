@@ -4,7 +4,7 @@ Solution to [https://github.com/nytm/games-web-code-test](https://github.com/nyt
 
 ### Implementation Decisions: ###
 * Game fits mobile screen sizes.
-* I did not download the `cards.json` file directly as I wanted to leave the cards flexible -- if there were a change to the deck of cards, I'd get that update as soon as my app starts. I used `fetch()` to get the data.
+* I did not download the `cards.json` file directly as I wanted to leave the cards flexible. Instead, I used `fetch()` to get the data so that if there were a change to the deck of cards, I'd get that update as soon as my app starts.
 * I separated state management into 2 places:
     * `Game` manages the _view_ of the app: (1) initial and (2) play
     * `Board` manages the _game play_: number of matches, is game finished yet, etc.
