@@ -3,6 +3,8 @@ import React from 'react';
 import Timer from '../Timer/Timer';
 import timerStyles from '../Timer/Timer.scss';
 
+import RestartBtn from '../RestartBtn/RestartBtn';
+
 import styles from './Board.scss';
 
 class Board extends React.Component {
@@ -139,6 +141,7 @@ class Board extends React.Component {
 								{(this.state.finalTime) ? this.state.finalTime : "0:00"}
 							</div>
 					}
+					<RestartBtn restart={this.props.restart}/>	
 				</div>
 				<div className={styles.board}>
 					{
@@ -160,11 +163,11 @@ class Board extends React.Component {
 							<p>
 								Congrats!<br />You finished in<br />
 								<span className={styles.final_time}>{this.showFinalTime()}</span>
+								<RestartBtn restart={this.props.restart}/>	
 							</p>
 						</div>
 						: ""
 				}
-
 				<div className={styles.blocker}></div>
 			</div>
 		);

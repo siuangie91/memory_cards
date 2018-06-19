@@ -5,10 +5,10 @@ $blue: #79aff7;
 $clockFont: 'Orbitron', sans-serif;
 
 .timer_container {
-	text-align: center;
-  height: 40px;
+	position: relative;
   margin-top: 20px;
   font-size: 40px;
+	text-align: center;
 }
 
 .board_container {
@@ -118,6 +118,7 @@ $clockFont: 'Orbitron', sans-serif;
   animation-name: finished;
   animation-duration: 1200ms;
   animation-fill-mode: forwards;
+  text-align: center;	
 
   p {
 		position: absolute;
@@ -125,7 +126,6 @@ $clockFont: 'Orbitron', sans-serif;
 		top: 50%;
 		left: 0;
 		font-size: 2rem;
-  	text-align: center;
   	transform: translate(0%,-50%);
 
   	.final_time {
@@ -146,7 +146,6 @@ $clockFont: 'Orbitron', sans-serif;
 		opacity: 1;
 	}
 }
-
 
 .blocker {
 	display: none;

@@ -20,6 +20,7 @@ class Game extends React.Component {
 		};
 
 		this.fetchCards = this.fetchCards.bind(this);
+		this.restartGame = this.restartGame.bind(this);
 	}
 
 	fetchCards(level) {
@@ -52,7 +53,11 @@ class Game extends React.Component {
 			});
 	}
 
-
+	restartGame() {
+		this.setState({
+			view: VIEWS.INIT,
+		})
+	}
 
 	render() {
 		return (
@@ -63,15 +68,18 @@ class Game extends React.Component {
 		    	(this.state.view === VIEWS.INIT) ? 
 	    			<div className={styles.difficulty}>
 					    <p>Choose a difficulty!</p>	
-					    <button className={styles.choice_btn} onClick={() => this.fetchCards('easy')}>Easy</button>	
-					    <button className={styles.choice_btn} onClick={() => this.fetchCards('hard')}>Hard</button>
+					    <button className="btn" onClick={() => this.fetchCards('easy')}>Easy</button>
+					    {" "}	
+					    <button className="btn" onClick={() => this.fetchCards('hard')}>Hard</button>
 	    			</div>
 	    			: ""
 		    }
 
 		    {
 		    	(this.state.view === VIEWS.PLAY) ? 
-		    		<Board deck={this.state.deck}/>
+		    		<Board 
+		    			deck={this.state.deck}
+		    			restart={this.restartGame}/>
 		    		: ""
 		    }
 		  </div>
