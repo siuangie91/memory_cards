@@ -2,24 +2,20 @@ import React from 'react';
 
 import styles from './Card.scss'
 
-class Card extends React.Component {
-	render() {
-		return (
-			<div value={this.props.value}
-				className={styles.card}
-				onClick={this.props.clickHandler}>
+const Card = (props) => (
+	<div value={props.value}
+		className={styles.card}
+		onClick={props.clickHandler}>
 
-				<div className={styles.cardflipper}>
-					<div className={`${styles.cardside} ${styles.cardback} ${styles[this.props.color]}`}></div>
+		<div className={styles.cardflipper}>
+			<div className={`${styles.cardside} ${styles.cardback} ${styles[props.color]}`}></div>
 
-					<div className={`${styles.cardside} ${styles.cardface} ${styles[this.props.color]}`}>
-						<span>{this.props.value}</span>
-					</div>
-				</div>
-
+			<div className={`${styles.cardside} ${styles.cardface} ${styles[props.color]}`}>
+				<span>{props.value}</span>
 			</div>
-		)
-	}
-}
+		</div>
+
+	</div>
+);
 
 export default Card;
