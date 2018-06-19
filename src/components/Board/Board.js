@@ -69,6 +69,8 @@ class Board extends React.Component {
 			}, () => { // when done setting state
 				// remove the blocker
 				this.removeBlocker();
+
+				// check if all matched
 				if(this.state.numFoundPairs === this.state.numPairs) {
 					const timer = document.querySelector(`.${timerStyles.timer}`);
 					const finalTime = timer.innerHTML;
@@ -76,17 +78,16 @@ class Board extends React.Component {
 					this.setState({
 						timerOn: false,
 						finalTime: finalTime
-					})
-
-					// alert('you matched all!');
+					});
 				}
 			});
 		} 
-		else { // if not match, flip everything that's not already matched back facedown
+		else { // if not match
+			// do a little animation
 			card1.classList.add(`${styles.wrong}`);
 			card2.classList.add(`${styles.wrong}`);
 
-			setTimeout(() => {
+			setTimeout(() => { // flip everything that's not already matched back facedown
 				// remove the blocker
 				this.removeBlocker();
 
@@ -143,6 +144,7 @@ class Board extends React.Component {
 					}
 					<RestartBtn restart={this.props.restart}/>	
 				</div>
+
 				<div className={styles.board}>
 					<div className={styles.card_container}>
 						{
