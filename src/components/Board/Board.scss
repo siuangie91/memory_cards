@@ -1,0 +1,42 @@
+$boardWidth: 600px;
+$blue: #79aff7;
+$white: #fff;
+
+.board {
+	width: $boardWidth;
+	margin: 20px auto;
+}
+
+.card {
+	position: relative;
+	display: inline-block;
+	width: calc((#{$boardWidth} / 4) - 10px);
+	height: calc((#{$boardWidth} / 4) + 20px);
+	margin-left: 10px;
+	margin-bottom: 20px;
+	background: #79AFF7;
+	pointer-events: none;
+
+	span {
+		position: absolute;
+		display: block;
+		width: 100%;
+		top: 50%;
+		color: $white;
+		text-align: center;
+		font-size: 3rem;
+		-webkit-transform: translate(0,-50%);
+		-moz-transform: translate(0,-50%);
+		transform: translate(0,-50%);
+	}
+
+	&.facedown {
+		background: black;
+		cursor: pointer;
+		pointer-events: auto;
+
+		span {
+			visibility: hidden;
+		}
+	}
+}

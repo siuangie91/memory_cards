@@ -1,8 +1,13 @@
-$hey-look-at-me-im-a-sass-variable: #333;
+$grey: #333;
 
 .header {
-  color: $hey-look-at-me-im-a-sass-variable;
-  font-family: sans-serif;
+	margin-top: 20px;
+	color: $grey;
+  font: {
+	  family: sans-serif;
+	  size: 24px;
+	}
+  text-align: center;
 }
 
 .placeholder {
