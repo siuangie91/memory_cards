@@ -2,6 +2,8 @@
 
 Solution to [https://github.com/nytm/games-web-code-test](https://github.com/nytm/games-web-code-test)
 
+Please run `npm install` and `npm run dev` to spin up the game at `localhost:3000`.
+
 ### Implementation Decisions: ###
 * Game fits mobile screen sizes.
 * I did not download the `cards.json` file directly as I wanted to leave the cards flexible. Instead, I used `fetch()` to get the data so that if there were a change to the deck of cards, I'd get that update as soon as my app starts.
