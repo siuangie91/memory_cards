@@ -1,12 +1,12 @@
 {
-  "name": "nyt-games-web-code-test",
-  "author": "Your Name Here",
+  "name": "nyt-games-web-code-test solution",
+  "author": "Angie Siu",
   "description": "A game we won’t soon forget",
   "version": "1.0.0",
   "license": "SEE LICENSE IN LICENSE.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/NYTimes/games-web-code-test"
+    "url": "https://github.com/siuangie91/memory_cards"
   },
   "private": true,
   "dependencies": {
