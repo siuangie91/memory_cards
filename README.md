@@ -1,7 +1,5 @@
 # Memory Card Game
 
-Solution to [https://github.com/nytm/games-web-code-test](https://github.com/nytm/games-web-code-test)
-
 Please run `npm install` and `npm run dev` to spin up the game at `localhost:3000`.
 
 ### Implementation Decisions: ###
