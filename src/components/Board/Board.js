@@ -10,6 +10,10 @@ import cardStyles from '../Card/Card.scss';
 import finishedStyles from '../Finished/Finished.scss';
 import styles from './Board.scss';
 
+// audio files
+import correctAudio from '../../_assets/audio/correct.mp3';
+import wrongAudio from '../../_assets/audio/wrong.mp3';
+
 class Board extends React.Component {
 	constructor(props) {
 		super(props);
@@ -28,6 +32,18 @@ class Board extends React.Component {
 
 		this.flipCard = this.flipCard.bind(this);
 		this.showFinalTime = this.showFinalTime.bind(this);
+	}
+
+	playSound(which) {
+		const correct = new Audio(correctAudio);
+		const wrong = new Audio(wrongAudio);
+
+		if(which === 'correct') { 
+			correct.play();
+		}
+		if(which === 'wrong') {
+			wrong.play();
+		}
 	}
 
 	flipCard(thisCard) {
@@ -62,6 +78,7 @@ class Board extends React.Component {
 		const card2 = this.state.currPair[1];		
 
 		if(card1.getAttribute('value') === card2.getAttribute('value')) { // if match
+			this.playSound('correct');
 			card1.classList.add(`${cardStyles.matched}`);
 			card2.classList.add(`${cardStyles.matched}`);
 
@@ -86,6 +103,7 @@ class Board extends React.Component {
 			});
 		} 
 		else { // if not match
+			this.playSound('wrong');
 			// do a little dance
 			card1.classList.add(`${cardStyles.wrong}`);
 			card2.classList.add(`${cardStyles.wrong}`);
