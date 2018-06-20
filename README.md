@@ -11,5 +11,5 @@ Solution to [https://github.com/nytm/games-web-code-test](https://github.com/nyt
     * `Board` manages the _game play_: number of matches, is game finished yet, etc.
 
 ### _Note:_ ###
-Usually I use this setup ([https://github.com/siuangie91/react_webpack/tree/with_sass/](https://github.com/siuangie91/react_webpack/tree/with_sass/)), however I wanted to take this opportunity to familiarize myself with the NYT code base.
+Usually I use this setup ([https://github.com/siuangie91/react_webpack/tree/with_sass/](https://github.com/siuangie91/react_webpack/tree/with_sass/)); however, I wanted to take this opportunity to familiarize myself with the NYT code base.
 
