@@ -5,7 +5,7 @@ Solution to [https://github.com/nytm/games-web-code-test](https://github.com/nyt
 ### Implementation Decisions: ###
 * Game fits mobile screen sizes.
 * I did not download the `cards.json` file directly as I wanted to leave the cards flexible. Instead, I used `fetch()` to get the data so that if there were a change to the deck of cards, I'd get that update as soon as my app starts.
-* Cards are shuffled each time they are fetched using the Fisher-Yates Shuffle [(https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
+* Cards are shuffled each time they are fetched using the Fisher-Yates Shuffle ([https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array))
 * I separated state management into 2 places:
     * `Game` manages the _view_ of the app: (1) initial and (2) play
     * `Board` manages the _game play_: number of matches, is game finished yet, etc.
