@@ -3,9 +3,11 @@ import React from 'react';
 import Timer from '../Timer/Timer';
 import RestartBtn from '../RestartBtn/RestartBtn';
 import Card from '../Card/Card';
+import Finished from '../Finished/Finished';
 
 import timerStyles from '../Timer/Timer.scss';
 import cardStyles from '../Card/Card.scss';
+import finishedStyles from '../Finished/Finished.scss';
 import styles from './Board.scss';
 
 class Board extends React.Component {
@@ -163,13 +165,9 @@ class Board extends React.Component {
 
 				{
 					(this.state.finalTime) ? 
-						<div className={styles.finished}>
-							<p>
-								Congrats!<br />You finished in<br />
-								<span className={styles.final_time}>{this.showFinalTime()}</span>
-								<RestartBtn restart={this.props.restart}/>	
-							</p>
-						</div>
+						<Finished 
+							text={this.showFinalTime()}
+							restart={this.props.restart}/>
 						: ""
 				}
 				<div className={styles.blocker}></div>
